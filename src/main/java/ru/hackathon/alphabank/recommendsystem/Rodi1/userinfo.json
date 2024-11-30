@@ -1,0 +1,27 @@
+{
+  "clientId": "client_0",
+  "organizationId": "organization_0",
+  "segment": "Средний бизнес",
+  "role": "Сотрудник",
+  "organizations": 179,
+  "currentMethod": "КЭП на токене",
+  "mobileApp": false,
+  "signatures": {
+    "common": {
+      "mobile": 14,
+      "web": 14
+    },
+    "special": {
+      "mobile": 7,
+      "web": 14
+    }
+  },
+  "availableMethods": [
+    "SMS",
+    "PayControl",
+    "КЭП на токене",
+    "КЭП в приложении"
+  ],
+  "claims": 0,
+  "recomendation": "КЭП на токене"
+}
