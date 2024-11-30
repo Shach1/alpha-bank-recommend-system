@@ -7,8 +7,9 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import ru.hackathon.alphabank.recommendsystem.model.ClientData;
-import ru.hackathon.alphabank.recommendsystem.model.ContextData;
+import ru.hackathon.alphabank.recommendsystem.model.ClientDetails;
+import ru.hackathon.alphabank.recommendsystem.request.ClientDataRequest;
+import ru.hackathon.alphabank.recommendsystem.request.MlResponse;
 
 @Service
 public class MLRecommendService {
@@ -21,23 +22,22 @@ public class MLRecommendService {
         this.restTemplate = restTemplate;
     }
 
-    public String recommend(ClientData data, ContextData contextData) {
+    public MlResponse recommend(ClientDetails data) {
         logger.info("Received client data: {}", data);
-        logger.info("Received context data: {}", contextData);
 
         // Create headers
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
 
         // Create request
-        HttpEntity<ClientData> request = new HttpEntity<>(data, headers);
+        HttpEntity<ClientDetails> request = new HttpEntity<>(data, headers);
 
         // Send request and get response
-        String url = "http://ml_app:5000/predict";
-        String recommendation = restTemplate.postForObject(url, request, String.class);
+        String url = "http://localhost:8081/predict";
+        MlResponse mlResponse = restTemplate.postForObject(url, request, MlResponse.class);
 
-        logger.info("Received recommendation from Python server: {}", recommendation);
-        return recommendation;
+        logger.info("Received recommendation from Python server: {}", mlResponse);
+        return mlResponse;
     }
 }
 

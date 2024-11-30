@@ -1,4 +1,4 @@
-package ru.hackathon.alphabank.recommendsystem.model;
+package ru.hackathon.alphabank.recommendsystem.request;
 
 public record DocumentType(
         int mobile, // Количество подписаний в мобильном приложении
