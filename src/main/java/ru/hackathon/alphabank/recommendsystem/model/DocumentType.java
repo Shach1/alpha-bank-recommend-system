@@ -1,4 +1,4 @@
-package ru.hackathon.alphabank.recommendsystem.Rodi1;
+package ru.hackathon.alphabank.recommendsystem.model;
 
 public record DocumentType(
         int mobile, // Количество подписаний в мобильном приложении
