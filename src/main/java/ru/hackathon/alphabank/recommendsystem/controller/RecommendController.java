@@ -6,19 +6,19 @@ import ru.hackathon.alphabank.recommendsystem.model.ClientData;
 import ru.hackathon.alphabank.recommendsystem.emum.RecommendEnum;
 import ru.hackathon.alphabank.recommendsystem.model.ContextData;
 import ru.hackathon.alphabank.recommendsystem.response.RecommendResponse;
-import ru.hackathon.alphabank.recommendsystem.service.RecommendService;
+import ru.hackathon.alphabank.recommendsystem.service.MLRecommendService;
 
 @RestController
 @RequestMapping("/api/v1/recommend")
 public class RecommendController {
 
-    private final RecommendService recommendationService;
+    private final MLRecommendService recommendationService;
 
-    public RecommendController(RecommendService recommendationService) {
+    public RecommendController(MLRecommendService recommendationService) {
         this.recommendationService = recommendationService;
     }
 
-    @PostMapping
+    @PostMapping("/get")
     public ResponseEntity<String> getRecommendation(@RequestBody ClientData clientData, @RequestParam(defaultValue = "0") int context) {
         ContextData contextData = new ContextData(context);
         String recommendation = recommendationService.recommend(clientData, contextData);
@@ -30,11 +30,4 @@ public class RecommendController {
         return ResponseEntity.ok( new RecommendResponse(RecommendEnum.values()[(int) (Math.random() * RecommendEnum.values().length)]));
     }
 
-    @PostMapping("/context") // Возможно это даже не нужно
-    public ResponseEntity<String> getContext(@RequestBody ContextData contextData) {
-        // Обработка данных о контексте
-        int context = contextData.context();
-        // Логика обработки контекста
-        return ResponseEntity.ok("Context received: " + context);
-    }
 }

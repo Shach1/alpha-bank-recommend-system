@@ -11,13 +11,13 @@ import ru.hackathon.alphabank.recommendsystem.model.ClientData;
 import ru.hackathon.alphabank.recommendsystem.model.ContextData;
 
 @Service
-public class RecommendService {
+public class MLRecommendService {
 
-    private static final Logger logger = LoggerFactory.getLogger(RecommendService.class);
+    private static final Logger logger = LoggerFactory.getLogger(MLRecommendService.class);
 
     private final RestTemplate restTemplate;
 
-    public RecommendService(RestTemplate restTemplate) {
+    public MLRecommendService(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }
 
@@ -33,7 +33,7 @@ public class RecommendService {
         HttpEntity<ClientData> request = new HttpEntity<>(data, headers);
 
         // Send request and get response
-        String url = "http://localhost:5000/predict";
+        String url = "http://localhost:8081/predict";
         String recommendation = restTemplate.postForObject(url, request, String.class);
 
         logger.info("Received recommendation from Python server: {}", recommendation);
