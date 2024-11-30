@@ -21,9 +21,9 @@ public class RecommendService {
 
         if(request.isFirstLogIn()){
             if (Objects.equals(request.currentDevice(), "Мобильное устройство")) {
-                recommendation = "Подключите КЭП на токене";
-            } else {
                 recommendation = "Подключите КЭП в приложении";
+            } else {
+                recommendation = "Подключите КЭП на токене";
             }
             return recommendation;
         }

@@ -8,6 +8,7 @@ import ru.hackathon.alphabank.recommendsystem.emum.RecommendEnum;
 import ru.hackathon.alphabank.recommendsystem.response.RecommendResponse;
 import ru.hackathon.alphabank.recommendsystem.service.RecommendService;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/api/v1/recommend")
 @RequiredArgsConstructor

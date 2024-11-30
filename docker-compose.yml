@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   backend1:
-    image: shach1/alpha-bank-backend:0.0.777
+    image: shach1/alpha-bank-backend:0.0.86
     container_name: backend_app
     ports:
       - "8080:8080"
@@ -14,10 +14,10 @@ services:
       - backend-network
 
   ml_app:
-    image: shach1/alpha-bank-ml:1.0.0
+    image: shach1/alpha-bank-ml:1.0.1
     container_name: ml_app
     ports:
-      - "8081:5000"
+      - "5000:5000"
     networks:
       - backend-network
 
