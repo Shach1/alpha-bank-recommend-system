@@ -33,7 +33,7 @@ public class MLRecommendService {
         HttpEntity<ClientData> request = new HttpEntity<>(data, headers);
 
         // Send request and get response
-        String url = "http://localhost:8081/predict";
+        String url = "http://ml_app:5000/predict";
         String recommendation = restTemplate.postForObject(url, request, String.class);
 
         logger.info("Received recommendation from Python server: {}", recommendation);
