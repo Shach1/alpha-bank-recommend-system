@@ -7,7 +7,7 @@ import ru.hackathon.alphabank.recommendsystem.request.ClientDataRequest;
 import ru.hackathon.alphabank.recommendsystem.response.RecommendResponse;
 import ru.hackathon.alphabank.recommendsystem.service.RecommendService;
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://176.108.251.22")
 @RestController
 @RequestMapping("/api/v1/recommend")
 @RequiredArgsConstructor
