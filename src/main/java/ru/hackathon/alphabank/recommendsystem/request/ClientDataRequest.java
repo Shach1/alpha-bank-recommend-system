@@ -15,7 +15,7 @@ public record ClientDataRequest(
         @JsonProperty("signatures") Signatures signatures,
         @JsonProperty("availableMethods") List<String> availableMethods,
         @JsonProperty("claims") int claims, // Наличие обращений
-        @JsonProperty("isFirstLogIn") boolean isFirstLogIn,
+        @JsonProperty("isFirstLogIn") boolean isFirstLogIn, // Первый ли логин
         @JsonProperty("currentDevice") String currentDevice // "Мобильное устройство", "ПК"
 ) {}
 

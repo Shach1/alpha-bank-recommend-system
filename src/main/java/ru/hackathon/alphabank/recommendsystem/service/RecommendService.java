@@ -21,9 +21,9 @@ public class RecommendService {
 
         if(request.isFirstLogIn()){
             if (Objects.equals(request.currentDevice(), "Мобильное устройство")) {
-                recommendation = "Подключите КЭП в приложении";
+                recommendation = "Удобство на кончиках пальцев: подписывайте документы в любое время и в любом месте с помощью КЭП в приложении.";
             } else {
-                recommendation = "Подключите КЭП на токене";
+                recommendation = "Надежность и безопасность: используйте КЭП на токене для защищенного подписания документов.";
             }
             return recommendation;
         }
@@ -31,16 +31,14 @@ public class RecommendService {
         MlResponse mlRequest = mlRecommendService.recommend(ClientDataMapper.mapToClientDetails(request));
         switch (mlRequest.recommendedMethod()) {
             case 1:   //PayControl
-                recommendation = "Подключите PayControl";
+                recommendation = "Усиленная защита для вашего бизнеса: выберите PayControl для максимальной безопасности операций.";
                 break;
             case 2:   //КЭП на токене
-                recommendation = "Подключите КЭП на токене из ml";
+                recommendation = "Простота и надежность в использовании: КЭП на токене для эффективной работы с документами.";
                 break;
             case 3:   //КЭП в приложении
-                recommendation = "Подключите КЭП в приложении";
+                recommendation = "Оцените преимущества цифровой трансформации с КЭП в приложении — меньше бумаги, больше эффективности.";
                 break;
-            default:
-                recommendation = null;
         }
         return recommendation;
     }
